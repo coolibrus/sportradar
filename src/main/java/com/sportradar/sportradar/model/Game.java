@@ -22,10 +22,11 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY, generator="game_seq_gen")
-    private int id;
+    private Long id;
     private String homeTeam;
     private String awayTeam;
-    private int homeScores;
-    private int awayScores;
-    private boolean inProgress;
+    private Integer homeScores;
+    private Integer awayScores;
+    private Boolean inProgress;
+    private Long startTimeStamp;
 }
