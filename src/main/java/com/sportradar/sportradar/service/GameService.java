@@ -1,26 +1,16 @@
 package com.sportradar.sportradar.service;
 
 import com.sportradar.sportradar.model.Game;
-import com.sportradar.sportradar.repository.GameRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-@Slf4j
+import java.util.List;
+import java.util.Optional;
+
 @Service
-@RequiredArgsConstructor
-public class GameService {
-
-    private final GameRepository gameRepository;
-
-    public Game start(String homeTeam, String awayTeam) {
-        Game game = Game.builder()
-                .homeTeam(homeTeam)
-                .awayTeam(awayTeam)
-                .awayScores(0)
-                .homeScores(0)
-                .inProgress(true)
-                .build();
-        return gameRepository.save(game);
-    }
+public interface GameService {
+    Game start(String homeTeam, String awayTeam);
+    Game updateScores(Long gameId, Integer homeTeamScores, Integer awayTeamScores);
+    Game finish(Long gameId);
+    Optional<Game> getGameById(Long gameId);
+    List<String> getActiveGames();
 }
