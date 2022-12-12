@@ -20,10 +20,11 @@ public class GameServiceTest {
     @InjectMocks
     private GameServiceImpl gameService;
 
+    private final String homeTeam = "Real";
+    private final String awayTeam = "Barcelona";
+
     @Test
     public void startGameTest() {
-        String homeTeam = "Real";
-        String awayTeam = "Barcelona";
         Game game = Game.builder()
                 .id(1L)
                 .homeTeam(homeTeam)
@@ -34,7 +35,6 @@ public class GameServiceTest {
         when(gameRepository.save(any())).thenReturn(game);
 
         Game gameToTest = gameService.start(homeTeam, awayTeam);
-
         assertEquals(game.getHomeTeam(), gameToTest.getHomeTeam());
         assertEquals(game.getAwayTeam(), gameToTest.getAwayTeam());
         assertEquals(0, gameToTest.getHomeScores());
@@ -44,8 +44,6 @@ public class GameServiceTest {
 
     @Test
     public void updateScoresTest() {
-        String homeTeam = "Real";
-        String awayTeam = "Barcelona";
         Game game = Game.builder()
                 .id(1L)
                 .homeTeam(homeTeam)
@@ -64,8 +62,6 @@ public class GameServiceTest {
 
     @Test
     public void finishGameTest() {
-        String homeTeam = "Real";
-        String awayTeam = "Barcelona";
         Game game = Game.builder()
                 .id(1L)
                 .homeTeam(homeTeam)
