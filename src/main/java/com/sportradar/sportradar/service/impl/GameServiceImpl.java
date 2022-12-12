@@ -37,6 +37,8 @@ public class GameServiceImpl implements GameService {
     @Transactional
     public Game updateScores(Game game, Integer homeTeamScores, Integer awayTeamScores) {
         log.info("Scores updated for game {} between teams: {} and {}.", game.getId(), homeTeamScores, awayTeamScores);
+        game.setHomeScores(homeTeamScores);
+        game.setAwayScores(awayTeamScores);
         return gameRepository.save(game);
     }
 
