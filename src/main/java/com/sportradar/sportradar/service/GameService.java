@@ -9,8 +9,8 @@ import java.util.Optional;
 @Service
 public interface GameService {
     Game start(String homeTeam, String awayTeam);
-    Game updateScores(Long gameId, Integer homeTeamScores, Integer awayTeamScores);
-    Game finish(Long gameId);
+    Game updateScores(Game game, Integer homeTeamScores, Integer awayTeamScores);
+    Game finish(Game game);
     Optional<Game> getGameById(Long gameId);
     List<String> getActiveGames();
 }

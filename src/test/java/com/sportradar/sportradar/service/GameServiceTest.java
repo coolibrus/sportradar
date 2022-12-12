@@ -56,7 +56,7 @@ public class GameServiceTest {
                 .build();
         when(gameRepository.save(any())).thenReturn(game);
 
-        Game gameToTest = gameService.updateScores(1L, 3, 2);
+        Game gameToTest = gameService.updateScores(game, 3, 2);
         assertEquals(3, gameToTest.getHomeScores());
         assertEquals(2, gameToTest.getAwayScores());
         assertEquals(true, gameToTest.getInProgress());
@@ -76,10 +76,8 @@ public class GameServiceTest {
                 .build();
         when(gameRepository.save(any())).thenReturn(game);
 
-        Game gameToTest = gameService.finish(1L);
+        Game gameToTest = gameService.finish(game);
         assertEquals(false, gameToTest.getInProgress());
     }
-
-
 
 }
