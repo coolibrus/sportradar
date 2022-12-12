@@ -31,6 +31,7 @@ public class GameServiceTest {
                 .awayTeam(awayTeam)
                 .homeScores(0)
                 .awayScores(0)
+                .inProgress(true)
                 .build();
         when(gameRepository.save(any())).thenReturn(game);
 
