@@ -11,6 +11,6 @@ public interface GameRepository extends JpaRepository<Game, Long> {
     @Query("select CONCAT(homeTeam, ' ', homeScores, ' - ', awayTeam, ' ', awayScores) " +
             "from Game " +
             "where inProgress = true " +
-            "order by homeScores + awayScores, startTimeStamp desc")
+            "order by homeScores + awayScores desc, startTimeStamp desc")
     List<String> getGamesByInProgress(boolean inProgress);
 }
